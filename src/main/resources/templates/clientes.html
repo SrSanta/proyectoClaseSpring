@@ -1,0 +1,64 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title th:text="#{clientes.titulo}">Clientes</title>
+	<style>
+		.clearfix::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+<div id="contenedora" style="float:none; margin: 0 auto;width: 95%;">
+	<div class="clearfix">
+		<div style="float: left; width: 50%">
+			<h1 th:text="#{clientes.titulo}">Clientes</h1>
+		</div>
+		<div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
+			<div style="position: absolute; left: 39%; top: 39%;">
+				<form action="/clientes/crear">
+					<input type="submit" th:value="#{clientes.accion.nuevo}" value="Crear">
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<hr/>
+	</div>
+	<div class="clearfix">
+		<div style="float: left;width: 8%" th:text="#{clientes.tabla.id}">Id</div>
+		<div style="float: left;width: 14%" th:text="#{clientes.tabla.nombre}">Nombre</div>
+		<div style="float: left;width: 14%" th:text="#{clientes.tabla.apellido1}">Apellido1</div>
+		<div style="float: left;width: 14%" th:text="#{clientes.tabla.apellido2}">Apellido2</div>
+		<div style="float: left;width: 14%" th:text="#{clientes.tabla.ciudad}">Ciudad</div>
+		<div style="float: left;width: 14%" th:text="#{clientes.tabla.categoria}">Categoría</div>
+		<div style="float: none;width: auto;overflow: hidden;" th:text="#{clientes.tabla.accion}">Acción</div>
+	</div>
+	<div class="clearfix">
+		<hr/>
+	</div>
+	<div th:each="cliente : ${listaClientes}" style="margin-top: 6px;" class="clearfix">
+		<div style="float: left;width: 8%" th:text="${cliente.id}">0</div>
+		<div style="float: left;width: 14%" th:text="${cliente.nombre}">nombre</div>
+		<div style="float: left;width: 14%" th:text="${cliente.apellido1}">apellido1</div>
+		<div style="float: left;width: 14%" th:text="${cliente.apellido2 ?: '&nbsp;'}">apellido2</div>
+		<div style="float: left;width: 14%" th:text="${cliente.ciudad}">ciudad</div>
+		<div style="float: left;width: 14%" th:text="${cliente.categoria}">categoría</div>
+		<div style="float: none;width: auto;overflow: hidden;">
+			<form th:action="@{/clientes/__${cliente.id}__}" style="display: inline;">
+				<input type="submit" th:value="#{clientes.accion.detalle}" value="Ver Detalle" />
+			</form>
+			<form th:action="@{/clientes/editar/__${cliente.id}__}" style="display: inline;">
+				<input type="submit" th:value="#{clientes.accion.editar}" value="Editar" />
+			</form>
+			<form th:action="@{/clientes/borrar/__${cliente.id}__}" method="post" style="display: inline;">
+				<input type="submit" th:value="#{clientes.accion.eliminar}" value="Eliminar" />
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
