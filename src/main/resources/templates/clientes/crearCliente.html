@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{clientes.accion.nuevo}">Crear Cliente</title>
+</head>
+<body>
+<div>
+    <h1 th:text="#{clientes.accion.nuevo}">Crear Cliente</h1>
+    <form th:action="@{/clientes/crear}" method="post">
+        <div>
+            <label th:text="#{clientes.form.nombre}">Nombre:</label>
+            <input type="text" th:field="*{cliente.nombre}" />
+        </div>
+        <div>
+            <label th:text="#{clientes.form.apellido1}">Primer Apellido:</label>
+            <input type="text" th:field="*{cliente.apellido1}" />
+        </div>
+        <div>
+            <label th:text="#{clientes.form.apellido2}">Segundo Apellido:</label>
+            <input type="text" th:field="*{cliente.apellido2}" />
+        </div>
+        <div>
+            <label th:text="#{clientes.form.ciudad}">Ciudad:</label>
+            <input type="text" th:field="*{cliente.ciudad}" />
+        </div>
+        <div>
+            <label th:text="#{clientes.form.categoria}">Categoría:</label>
+            <input type="text" th:field="*{cliente.categoria}" />
+        </div>
+        <button type="submit" th:text="#{clientes.accion.guardar}">Guardar</button>
+        <a th:href="@{/clientes}" th:text="#{clientes.accion.cancelar}">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 package org.iesbelen.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.iesbelen.dao.ClienteDAO;
 import org.iesbelen.modelo.Cliente;
@@ -17,7 +18,30 @@ public class ClienteService {
 		return clienteDAO.getAll();
 		
 	}
-	
-	
 
+	public Cliente one(Integer id) {
+		Optional<Cliente> optFab = clienteDAO.find(id);
+		if (optFab.isPresent())
+			return optFab.get();
+		else
+			return null;
+	}
+
+	public void newCliente(Cliente cliente) {
+
+		clienteDAO.create(cliente);
+
+	}
+
+	public void replaceCliente(Cliente cliente) {
+
+		clienteDAO.update(cliente);
+
+	}
+
+	public void deleteCliente(int id) {
+
+		clienteDAO.delete(id);
+
+	}
 }

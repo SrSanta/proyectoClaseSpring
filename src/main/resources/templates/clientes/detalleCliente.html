@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{clientes.detalle.titulo}">Detalles del Cliente</title>
+</head>
+<body>
+<div>
+    <h1 th:text="#{clientes.detalle.titulo}">Detalles del Cliente</h1>
+    <p>
+        <strong th:text="#{clientes.tabla.id}">ID:</strong>
+        <span th:text="${cliente.id}"></span>
+    </p>
+    <p>
+        <strong th:text="#{clientes.tabla.nombre}">Nombre:</strong>
+        <span th:text="${cliente.nombre}"></span>
+    </p>
+    <p>
+        <strong th:text="#{clientes.tabla.apellido1}">Primer Apellido:</strong>
+        <span th:text="${cliente.apellido1}"></span>
+    </p>
+    <p>
+        <strong th:text="#{clientes.tabla.apellido2}">Segundo Apellido:</strong>
+        <span th:text="${cliente.apellido2}"></span>
+    </p>
+    <p>
+        <strong th:text="#{clientes.tabla.ciudad}">Ciudad:</strong>
+        <span th:text="${cliente.ciudad}"></span>
+    </p>
+    <p>
+        <strong th:text="#{clientes.tabla.categoria}">Categoría:</strong>
+        <span th:text="${cliente.categoria}"></span>
+    </p>
+    <a th:href="@{/clientes}" th:text="#{clientes.accion.cancelar}">Volver</a>
+</div>
+</body>
+</html>
