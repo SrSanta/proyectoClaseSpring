@@ -7,7 +7,7 @@
 <body>
 <div>
     <h1 th:text="#{clientes.accion.editar}">Editar Cliente</h1>
-    <form th:action="@{/clientes/editar/{id}(id=${cliente.id})}" method="post">
+    <form th:action="@{/clientes/editar/__${cliente.id}__}" method="post">
         <input type="hidden" th:field="*{id}" />
         <div>
             <label th:text="#{clientes.form.nombre}">Nombre:</label>

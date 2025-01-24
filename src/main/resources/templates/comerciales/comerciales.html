@@ -20,7 +20,7 @@
         </div>
         <div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
             <div style="position: absolute; left: 39%; top: 39%;">
-                <form action="/comerciales/crear">
+                <form th:action="@{/comerciales/crear}" method="get">
                     <input type="submit" th:value="#{comerciales.accion.nuevo}" value="Crear">
                 </form>
             </div>
@@ -45,16 +45,16 @@
         <div style="float: left;width: 14%" th:text="${comercial.id}">0</div>
         <div style="float: left;width: 14%" th:text="${comercial.nombre}">nombre</div>
         <div style="float: left;width: 14%" th:text="${comercial.apellido1}">apellido1</div>
-        <div style="float: left;width: 14%" th:text="${comercial.apellido2 ?: '&nbsp;'}">apellido2</div>
+        <div style="float: left;width: 14%" th:text="${comercial.apellido2 ?: ''}">apellido2</div>
         <div style="float: left;width: 14%" th:text="${comercial.comision}">comisión</div>
         <div style="float: none;width: auto;overflow: hidden;">
-            <form th:action="@{/comercial/__${comercial.id}__}" style="display: inline;">
+            <form th:action="@{/comerciales/__${comercial.id}__}" method="get" style="display: inline;">
                 <input type="submit" th:value="#{comerciales.accion.detalle}" value="Ver Detalle"/>
             </form>
-            <form th:action="@{/comercial/editar/__${comercial.id}__}" style="display: inline;">
+            <form th:action="@{/comerciales/editar/__${comercial.id}__}" method="get" style="display: inline;">
                 <input type="submit" th:value="#{comerciales.accion.editar}" value="Editar"/>
             </form>
-            <form th:action="@{/comercial/borrar/__${comercial.id}__}" method="post" style="display: inline;">
+            <form th:action="@{/comerciales/borrar/__${comercial.id}__}" method="post" style="display: inline;">
                 <input type="submit" th:value="#{comerciales.accion.eliminar}" value="Eliminar"/>
             </form>
         </div>

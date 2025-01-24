@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{comerciales.detalle.titulo}">Detalle Comercial</title>
+</head>
+<body>
+<div style="margin: 0 auto; width: 50%; text-align: center;">
+    <h1 th:text="#{comerciales.detalle.titulo}">Detalle Comercial</h1>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <tr>
+            <th style="text-align: left;" th:text="#{comerciales.tabla.id}">Id:</th>
+            <td th:text="${comercial.id}">0</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;" th:text="#{comerciales.tabla.nombre}">Nombre:</th>
+            <td th:text="${comercial.nombre}">Nombre</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;" th:text="#{comerciales.tabla.apellido1}">Apellido 1:</th>
+            <td th:text="${comercial.apellido1}">Apellido 1</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;" th:text="#{comerciales.tabla.apellido2}">Apellido 2:</th>
+            <td th:text="${comercial.apellido2 ?: ''}">Apellido 2</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;" th:text="#{comerciales.tabla.comision}">Comisión:</th>
+            <td th:text="${comercial.comision}">0</td>
+        </tr>
+    </table>
+    <div style="margin-top: 20px;">
+        <a th:href="@{/comerciales}" th:text="#{comerciales.accion.cancelar}">Volver</a>
+    </div>
+</div>
+</body>
+</html>

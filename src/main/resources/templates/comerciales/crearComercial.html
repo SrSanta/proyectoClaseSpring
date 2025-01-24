@@ -1,0 +1,34 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{comerciales.accion.nuevo}">Crear Comercial</title>
+</head>
+<body>
+<div style="margin: 0 auto; width: 50%; text-align: center;">
+    <h1 th:text="#{comerciales.accion.nuevo}">Crear Comercial</h1>
+    <form th:action="@{/comerciales/crear}" th:object="${comercial}" method="post">
+        <div style="margin-bottom: 10px;">
+            <label for="nombre" th:text="#{comerciales.form.nombre}">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required />
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="apellido1" th:text="#{comerciales.form.apellido1}">Apellido 1:</label>
+            <input type="text" id="apellido1" name="apellido1" th:field="*{apellido1}" required />
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="apellido2" th:text="#{comerciales.form.apellido2}">Apellido 2:</label>
+            <input type="text" id="apellido2" name="apellido2" th:field="*{apellido2}" />
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="comision" th:text="#{comerciales.form.comision}">Comisión:</label>
+            <input type="number" id="comision" name="comision" th:field="*{comision}" required />
+        </div>
+        <div style="margin-top: 20px;">
+            <button type="submit" th:text="#{comerciales.accion.guardar}">Guardar</button>
+            <a th:href="@{/comerciales}" th:text="#{comerciales.accion.cancelar}">Cancelar</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

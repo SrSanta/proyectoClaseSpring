@@ -25,7 +25,7 @@ public class ComercialController {
         List<Comercial> listaComercial =  comercialService.listAll();
         model.addAttribute("listaComerciales", listaComercial);
 
-        return "comerciales";
+        return "/comerciales/comerciales";
     }
 
 
@@ -33,9 +33,9 @@ public class ComercialController {
     public String detalle(Model model, @PathVariable Integer id ) {
 
         Comercial comercial = comercialService.one(id);
-        model.addAttribute("comerciale", comercial);
+        model.addAttribute("comercial", comercial);
 
-        return "detalleComercial";
+        return "/comerciales/detalleComercial";
 
     }
 
@@ -45,7 +45,7 @@ public class ComercialController {
         Comercial comercial = new Comercial();
         model.addAttribute("comercial", comercial);
 
-        return "crearComercial";
+        return "/comerciales/crearComercial";
 
     }
 
@@ -64,7 +64,7 @@ public class ComercialController {
         Comercial comercial = comercialService.one(id);
         model.addAttribute("comercial", comercial);
 
-        return "editarComercial";
+        return "/comerciales/editarComercial";
 
     }
 
