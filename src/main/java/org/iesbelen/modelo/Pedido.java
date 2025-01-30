@@ -15,6 +15,6 @@ public class Pedido {
     private int id;
     private double total;
     private LocalDate fecha;
-    private int idCliente;
+    private Long idCliente;
     private int idComercial;
 }

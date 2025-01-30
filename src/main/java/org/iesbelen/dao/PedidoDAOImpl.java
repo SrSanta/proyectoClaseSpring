@@ -25,7 +25,7 @@ public class PedidoDAOImpl implements PedidoDAO {
                 (rs, rowNum) -> new Pedido(rs.getInt("id"),
                         rs.getDouble("total"),
                         rs.getDate("fecha").toLocalDate(),
-                        rs.getInt("id_cliente"),
+                        rs.getLong("id_cliente"),
                         rs.getInt("id_comercial"))
         );
 
@@ -41,7 +41,7 @@ public class PedidoDAOImpl implements PedidoDAO {
                 (rs, rowNum) -> new Pedido(rs.getInt("id"),
                         rs.getDouble("total"),
                         rs.getDate("fecha").toLocalDate(),
-                        rs.getInt("id_cliente"),
+                        rs.getLong("id_cliente"),
                         rs.getInt("id_comercial"))
                 , idComercial
         );
@@ -58,7 +58,7 @@ public class PedidoDAOImpl implements PedidoDAO {
                 (rs, rowNum) -> new Pedido(rs.getInt("id"),
                         rs.getDouble("total"),
                         rs.getDate("fecha").toLocalDate(),
-                        rs.getInt("id_cliente"),
+                        rs.getLong("id_cliente"),
                         rs.getInt("id_comercial"))
                 , idCliente
         );

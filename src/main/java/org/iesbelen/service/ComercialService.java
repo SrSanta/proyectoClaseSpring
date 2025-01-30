@@ -11,9 +11,8 @@ import org.iesbelen.modelo.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ComercialService {
@@ -59,23 +58,24 @@ public class ComercialService {
     }
 
     public List<PedidoDTO> listPedidosDTO(int idComercial) {
-
         List<Cliente> clientes = clienteDAO.getAll();
         List<Pedido> pedidos = pedidoDAO.getAllByComercial(idComercial);
-        pedidos.sort((a, b) -> b.getFecha().compareTo(a.getFecha()));
 
-        List<PedidoDTO> pedidosDTO = new ArrayList<>();
+        // Mapa para acceder rápidamente a los clientes por su ID
+        Map<Long, String> clienteMap = clientes.stream()
+                .collect(Collectors.toMap(
+                        Cliente::getId,
+                        c -> c.getNombre() + " " + c.getApellido1() +
+                                (c.getApellido2() != null ? " " + c.getApellido2() : "")
+                ));
 
-        // Esto es para añadir el nombre del cliente a cada pedido, es mejor hacerlo directamente por SQL
-        for (Pedido p : pedidos) {
-            int idC = p.getIdCliente();
-            for (Cliente c : clientes) {
-                if (c.getId() == idC) {
-                    pedidosDTO.add(pedidoMapper.pedidoAPedidoDTO(p, c.getNombre() + " " + c.getApellido1()
-                            + " " + (c.getApellido2() != null ? c.getApellido2() : ""), ""));
-                }
-            }
-        }
-        return pedidosDTO;
+        return pedidos.stream()
+                .sorted(Comparator.comparing(Pedido::getFecha).reversed()) // Ordenar por fecha descendente
+                .map(p -> pedidoMapper.pedidoAPedidoDTO(
+                        p,
+                        clienteMap.getOrDefault(p.getIdCliente(), "Desconocido"),
+                        ""
+                ))
+                .collect(Collectors.toList());
     }
 }
