@@ -29,6 +29,33 @@
             <td th:text="${comercial.comision}">0</td>
         </tr>
     </table>
+
+    <!-- Sección para mostrar la lista de pedidos -->
+    <h2 th:text="#{comerciales.titulo}">Pedidos</h2>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+        <tr>
+            <th style="text-align: left;" th:text="#{comerciales.detalle.pedidos.id}">ID Pedido</th>
+            <th style="text-align: left;" th:text="#{comerciales.detalle.pedidos.total}">Total</th>
+            <th style="text-align: left;" th:text="#{comerciales.detalle.pedidos.fecha}">Fecha</th>
+            <th style="text-align: left;" th:text="#{comerciales.detalle.pedidos.cliente}">Cliente</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pedido : ${pedidos}">
+            <td th:text="${pedido.id}">0</td>
+            <td th:text="${pedido.total}">0.0</td>
+            <td th:text="${pedido.fecha}">Fecha</td>
+            <td>
+                <a th:href="@{/clientes/{id}(id=${pedido.cliente.id})}" target="_blank">
+                    <span th:text="${pedido.cliente.nombre + ' ' + pedido.cliente.apellido1}">Cliente</span>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Botón para volver -->
     <div style="margin-top: 20px;">
         <a th:href="@{/comerciales}" th:text="#{comerciales.accion.cancelar}">Volver</a>
     </div>

@@ -1,7 +1,9 @@
 package org.iesbelen.service;
 
 import org.iesbelen.dao.ComercialDAO;
+import org.iesbelen.dao.PedidoDAO;
 import org.iesbelen.modelo.Comercial;
+import org.iesbelen.modelo.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -11,6 +13,8 @@ import java.util.Optional;
 public class ComercialService {
     @Autowired
     private ComercialDAO comercialDAO;
+    @Autowired
+    private PedidoDAO pedidoDAO;
 
     public List<Comercial> listAll() {
 
@@ -42,5 +46,9 @@ public class ComercialService {
 
         comercialDAO.delete(id);
 
+    }
+
+    public List<Pedido> findPedidosByComercialId(int comercialId) {
+        return pedidoDAO.findByComercialId(comercialId);
     }
 }
