@@ -1,20 +1,19 @@
-package org.iesbelen.modelo;
+package org.iesbelen.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.iesbelen.modelo.Cliente;
-import org.iesbelen.modelo.Comercial;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
-public class Pedido {
+public class PedidoDTO {
     private int id;
     private double total;
     private LocalDate fecha;
     private int idCliente;
     private int idComercial;
+
+    private String nombreCliente;
+    private String nombreComercial;
 }

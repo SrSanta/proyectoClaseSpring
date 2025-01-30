@@ -31,29 +31,23 @@
     </table>
 
     <!-- Sección para mostrar la lista de pedidos -->
-    <h2 th:text="#{comerciales.titulo}">Pedidos</h2>
-    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-        <thead>
-        <tr>
-            <th style="text-align: left;" th:text="#{comerciales.detalle.pedidos.id}">ID Pedido</th>
-            <th style="text-align: left;" th:text="#{comerciales.detalle.pedidos.total}">Total</th>
-            <th style="text-align: left;" th:text="#{comerciales.detalle.pedidos.fecha}">Fecha</th>
-            <th style="text-align: left;" th:text="#{comerciales.detalle.pedidos.cliente}">Cliente</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="pedido : ${pedidos}">
-            <td th:text="${pedido.id}">0</td>
-            <td th:text="${pedido.total}">0.0</td>
-            <td th:text="${pedido.fecha}">Fecha</td>
-            <td>
-                <a th:href="@{/clientes/{id}(id=${pedido.cliente.id})}" target="_blank">
-                    <span th:text="${pedido.cliente.nombre + ' ' + pedido.cliente.apellido1}">Cliente</span>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div style="margin-top: 6px" class="clearfix">
+        <div th:text="#{det.pedidos}" style="float: left;width: 50%">
+            Pedidos
+        </div>
+        <div style="float: none;width: auto;overflow: hidden;">
+            <div style="border: solid 1px grey; border-radius: 15px; margin-top: 10px; padding: 5px 10px 10px 10px; width: 200px"
+                 th:each="pedidoDTO : ${pedidosDTO}">
+
+                <p th:text="${pedidoDTO.getFecha()}">Fecha</p>
+                <p th:text="${pedidoDTO.getTotal()} + ' €'">Total</p>
+                <a th:href="@{/clientes/__${pedidoDTO.getIdCliente()}__}" th:text="${pedidoDTO.getNombreCliente()}" target="_blank">Cliente</a>
+            </div>
+        </div>
+        <div th:if="${pedidosDTO.isEmpty()}" style="float: none;width: auto;overflow: hidden;">
+            <p th:text="#{det.noHayPedidos}">No hay pedidos</p>
+        </div>
+    </div>
 
     <!-- Botón para volver -->
     <div style="margin-top: 20px;">

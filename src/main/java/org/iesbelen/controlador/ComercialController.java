@@ -1,5 +1,6 @@
 package org.iesbelen.controlador;
 
+import org.iesbelen.dto.PedidoDTO;
 import org.iesbelen.modelo.Comercial;
 import org.iesbelen.modelo.Pedido;
 import org.iesbelen.service.ComercialService;
@@ -27,14 +28,13 @@ public class ComercialController {
     }
 
     @GetMapping("/comerciales/{id}")
-    public String detalle(Model model, @PathVariable Integer id) {
+    public String detalle(Model model, @PathVariable Integer id ) {
+
         Comercial comercial = comercialService.one(id);
-        if (comercial == null) {
-            throw new RuntimeException("Comercial no encontrado con ID: " + id);
-        }
-        List<Pedido> pedidos = comercialService.findPedidosByComercialId(id);
         model.addAttribute("comercial", comercial);
-        model.addAttribute("pedidos", pedidos);
+
+        List<PedidoDTO> pedidosDTO = comercialService.listPedidosDTO(id);
+        model.addAttribute("pedidosDTO", pedidosDTO);
         return "/comerciales/detalleComercial";
     }
 
