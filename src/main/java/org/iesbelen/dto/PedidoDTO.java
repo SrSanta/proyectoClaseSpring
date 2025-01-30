@@ -11,7 +11,7 @@ public class PedidoDTO {
     private int id;
     private double total;
     private LocalDate fecha;
-    private int idCliente;
+    private long idCliente;
     private int idComercial;
 
     private String nombreCliente;

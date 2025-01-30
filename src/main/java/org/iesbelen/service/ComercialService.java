@@ -78,4 +78,12 @@ public class ComercialService {
                 ))
                 .collect(Collectors.toList());
     }
+
+    public int totalPedidosDTO() {
+        return pedidoDAO.getTotalPedido();
+    }
+
+    public double getPorcentajePedidos(int idComercial) {
+        return (double)listPedidosDTO(idComercial).size() / totalPedidosDTO() * 100;
+    }
 }

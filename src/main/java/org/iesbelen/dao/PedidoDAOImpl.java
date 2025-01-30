@@ -4,11 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.iesbelen.modelo.Pedido;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Slf4j
@@ -73,5 +70,10 @@ public class PedidoDAOImpl implements PedidoDAO {
         int rows = jdbcTemplate.update("DELETE FROM pedido WHERE id = ?", id);
 
         log.info("Delete de Pedido con {} registros eliminados.", rows);
+    }
+
+    @Override
+    public Integer getTotalPedido() {
+        return jdbcTemplate.queryForObject("SELECT count(*) FROM pedido", Integer.class);
     }
 }

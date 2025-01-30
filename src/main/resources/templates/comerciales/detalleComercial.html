@@ -28,6 +28,14 @@
             <th style="text-align: left;" th:text="#{comerciales.tabla.comision}">Comisión:</th>
             <td th:text="${comercial.comision}">0</td>
         </tr>
+        <tr>
+            <th style="text-align: left;" th:text="#{comerciales.tabla.total}">Total:</th>
+            <td th:text="${totalPedidos}">0</td>
+        </tr>
+        <tr>
+            <th style="text-align: left;" th:text="#{comerciales.tabla.media}">Media:</th>
+            <td th:text="${mediaPedidos}">0</td>
+        </tr>
     </table>
 
     <!-- Sección para mostrar la lista de pedidos -->
