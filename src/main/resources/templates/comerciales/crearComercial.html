@@ -10,11 +10,17 @@
     <form th:action="@{/comerciales/crear}" th:object="${comercial}" method="post">
         <div style="margin-bottom: 10px;">
             <label for="nombre" th:text="#{comerciales.form.nombre}">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required />
+            <input type="text" id="nombre" name="nombre" th:field="*{nombre}"/>
+            <ul th:if="${#fields.hasErrors('nombre')}">
+                <li th:each="err : ${#fields.errors('nombre')}" th:text="${err}" class="error" />
+            </ul>
         </div>
         <div style="margin-bottom: 10px;">
             <label for="apellido1" th:text="#{comerciales.form.apellido1}">Apellido 1:</label>
-            <input type="text" id="apellido1" name="apellido1" th:field="*{apellido1}" required />
+            <input type="text" id="apellido1" name="apellido1" th:field="*{apellido1}" />
+            <ul th:if="${#fields.hasErrors('apellido1')}">
+                <li th:each="err : ${#fields.errors('apellido1')}" th:text="${err}" class="error" />
+            </ul>
         </div>
         <div style="margin-bottom: 10px;">
             <label for="apellido2" th:text="#{comerciales.form.apellido2}">Apellido 2:</label>
@@ -22,7 +28,10 @@
         </div>
         <div style="margin-bottom: 10px;">
             <label for="comision" th:text="#{comerciales.form.comision}">Comisión:</label>
-            <input type="number" id="comision" name="comision" th:field="*{comision}" required />
+            <input type="number" id="comision" name="comision" th:field="*{comision}" />
+            <ul th:if="${#fields.hasErrors('comision')}">
+                <li th:each="err : ${#fields.errors('comision')}" th:text="${err}" class="error" />
+            </ul>
         </div>
         <div style="margin-top: 20px;">
             <button type="submit" th:text="#{comerciales.accion.guardar}">Guardar</button>
