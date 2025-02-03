@@ -53,31 +53,22 @@ public class ClienteController {
 	}
 
 	@PostMapping("/clientes/crear")
-	public RedirectView submitCrear(@Valid @ModelAttribute Cliente cliente, BindingResult result, Model model) {
-		if (!result.hasErrors()) {
-			clienteService.newCliente(cliente);
-			return new RedirectView("/clientes");
+	public String submitCrear(@Valid @ModelAttribute Cliente cliente, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			return "/clientes/crearCliente";
 		}
-		return new RedirectView("/clientes/crearCliente");
+		clienteService.newCliente(cliente);
+		return "redirect:/clientes";
 	}
+
 
 	@GetMapping("/clientes/editar/{id}")
-	public String editar(Model model, @PathVariable Integer id) {
-
-		Cliente cliente = clienteService.one(id);
-		model.addAttribute("cliente", cliente);
-
-		return "/clientes/editarCliente";
-
-	}
-
-
-	@PostMapping("/clientes/editar/{id}")
-	public RedirectView submitEditar(@ModelAttribute("cliente") Cliente cliente) {
-
+	public String submitEditar(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult result) {
+		if (result.hasErrors()) {
+			return "/clientes/editarCliente";
+		}
 		clienteService.replaceCliente(cliente);
-
-		return new RedirectView("/clientes");
+		return "redirect:/clientes";
 	}
 
 	@PostMapping("/clientes/borrar/{id}")

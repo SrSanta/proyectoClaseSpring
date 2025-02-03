@@ -8,30 +8,30 @@
 <div>
     <h1 th:text="#{clientes.detalle.titulo}">Detalles del Cliente</h1>
     <p>
-        <strong th:text="#{clientes.tabla.id}">ID:</strong>
+        <strong th:text="#{id}">ID:</strong>
         <span th:text="${cliente.id}"></span>
     </p>
     <p>
-        <strong th:text="#{clientes.tabla.nombre}">Nombre:</strong>
+        <strong th:text="#{nombre}">Nombre:</strong>
         <span th:text="${cliente.nombre}"></span>
     </p>
     <p>
-        <strong th:text="#{clientes.tabla.apellido1}">Primer Apellido:</strong>
+        <strong th:text="#{apellido1}">Primer Apellido:</strong>
         <span th:text="${cliente.apellido1}"></span>
     </p>
     <p>
-        <strong th:text="#{clientes.tabla.apellido2}">Segundo Apellido:</strong>
+        <strong th:text="#{apellido2}">Segundo Apellido:</strong>
         <span th:text="${cliente.apellido2}"></span>
     </p>
     <p>
-        <strong th:text="#{clientes.tabla.ciudad}">Ciudad:</strong>
+        <strong th:text="#{ciudad}">Ciudad:</strong>
         <span th:text="${cliente.ciudad}"></span>
     </p>
     <p>
-        <strong th:text="#{clientes.tabla.categoria}">Categoría:</strong>
+        <strong th:text="#{categoria}">Categoría:</strong>
         <span th:text="${cliente.categoria}"></span>
     </p>
-    <a th:href="@{/clientes}" th:text="#{clientes.accion.cancelar}">Volver</a>
+    <a th:href="@{/clientes}" th:text="#{cancelar}">Volver</a>
 </div>
 </body>
 </html>

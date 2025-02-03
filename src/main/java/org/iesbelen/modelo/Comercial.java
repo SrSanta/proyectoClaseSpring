@@ -15,15 +15,15 @@ import java.math.BigDecimal;
 public class Comercial {
 
 	private int id;
-	@NotBlank(message = "{cliente.error}")
-	@Size(max = 30, message = "{cliente.error}")
+	@NotBlank(message = "{error}")
+	@Size(max = 30, message = "{error}")
 	private String nombre;
-	@NotBlank(message = "{cliente.error}")
-	@Size(max = 30, message = "{cliente.error}")
+	@NotBlank(message = "{error}")
+	@Size(max = 30, message = "{error}")
 	private String apellido1;
 	private String apellido2;
-	@DecimalMax(value= "0.946", inclusive= true)
-	@DecimalMin(value= "0.276", inclusive= true)
+	@DecimalMax(value= "0.946", inclusive= true, message = "{error}")
+	@DecimalMin(value= "0.276", inclusive= true, message = "{error}")
 	private BigDecimal comision;
 
 	public Comercial(){}

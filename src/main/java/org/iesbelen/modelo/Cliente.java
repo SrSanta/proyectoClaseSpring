@@ -1,7 +1,6 @@
 package org.iesbelen.modelo;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,17 +15,21 @@ import lombok.NoArgsConstructor;
 public class Cliente {
 	
 	private long id;
-	@NotBlank(message = "{cliente.error}")
-	@Size(max = 30, message = "{cliente.error}")
+	@NotBlank(message = "{error}")
+	@Size(max = 30, message = "{error}")
 	private String nombre;
-	@NotBlank(message = "{cliente.error}")
-	@Size(max = 30, message = "{cliente.error}")
+	@NotBlank(message = "{error}")
+	@Size(max = 30, message = "{error}")
 	private String apellido1;
 	private String apellido2;
-	@NotBlank(message = "{cliente.error}")
-	@Size(max = 50, message = "{cliente.error}")
+	@NotBlank(message = "{error}")
+	@Size(max = 50, message = "{error}")
 	private String ciudad;
-	@NotBlank(message = "{cliente.error}")
-	@Size(min = 100,max = 1000, message = "{cliente.error}")
+	@NotNull(message = "{error}")
+	@Min(value = 100, message = "{error}")
+	@Max(value = 1000, message = "{error}")
 	private int categoria;
+
+//	@Email()
+//	private String email;
 }
