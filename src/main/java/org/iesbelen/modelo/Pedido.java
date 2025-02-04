@@ -3,18 +3,15 @@ package org.iesbelen.modelo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.iesbelen.modelo.Cliente;
-import org.iesbelen.modelo.Comercial;
-
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Pedido {
-    private int id;
+    private Integer id;
     private double total;
     private LocalDate fecha;
-    private Long idCliente;
-    private int idComercial;
+    private Long id_cliente;
+    private Integer id_comercial;
 }

@@ -7,7 +7,7 @@
 <body>
 <div style="margin: 0 auto; width: 50%; text-align: center;">
     <h1 th:text="#{comerciales.editar}">Editar Comercial</h1>
-    <form th:action="@{/comerciales/editar/__${comercial.id}__}" th:object="${comercial}" method="post">
+    <form th:action="@{/comercial/editar/__${comercial.id}__}" th:object="${comercial}" method="post">
         <div style="margin-bottom: 10px;">
             <label for="nombre" th:text="#{nombre}">Nombre:</label>
             <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required />
@@ -26,7 +26,7 @@
         </div>
         <div style="margin-top: 20px;">
             <button type="submit" th:text="#{guardar}">Guardar</button>
-            <a th:href="@{/comerciales}" th:text="#{cancelar}">Cancelar</a>
+            <a th:href="@{/comercial}" th:text="#{cancelar}">Cancelar</a>
         </div>
     </form>
 </div>

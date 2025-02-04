@@ -1,79 +1,71 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title th:text="#{comerciales.titulo}">Detalle Comercial</title>
+  <meta charset="UTF-8">
+  <title th:text="#{comerciales.titulo}">Detalle Comercial</title>
 </head>
 <body>
 <div style="margin: 0 auto; width: 50%; text-align: center;">
-    <h1 th:text="#{comerciales.titulo}">Detalle Comercial</h1>
-    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-        <tr>
-            <th style="text-align: left;" th:text="#{id}">Id:</th>
-            <td th:text="${comercial.id}">0</td>
-        </tr>
-        <tr>
-            <th style="text-align: left;" th:text="#{nombre}">Nombre:</th>
-            <td th:text="${comercial.nombre}">Nombre</td>
-        </tr>
-        <tr>
-            <th style="text-align: left;" th:text="#{apellido1}">Apellido 1:</th>
-            <td th:text="${comercial.apellido1}">Apellido 1</td>
-        </tr>
-        <tr>
-            <th style="text-align: left;" th:text="#{apellido2}">Apellido 2:</th>
-            <td th:text="${comercial.apellido2 ?: ''}">Apellido 2</td>
-        </tr>
-        <tr>
-            <th style="text-align: left;" th:text="#{comision}">Comisión:</th>
-            <td th:text="${comercial.comision}">0</td>
-        </tr>
-        <tr>
-            <th style="text-align: left;" th:text="#{total}">Total:</th>
-            <td th:text="${totalPedidos}">0</td>
-        </tr>
-        <tr>
-            <th style="text-align: left;" th:text="#{media}">Media:</th>
-            <td th:text="${mediaPedidos}">0</td>
-        </tr>
-    </table>
+  <h1 th:text="#{comerciales.titulo}">Detalle Comercial</h1>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <tr>
+      <th style="text-align: left;" th:text="#{id}">Id:</th>
+      <td th:text="${comercial.id}">0</td>
+    </tr>
+    <tr>
+      <th style="text-align: left;" th:text="#{nombre}">Nombre:</th>
+      <td th:text="${comercial.nombre}">Nombre</td>
+    </tr>
+    <tr>
+      <th style="text-align: left;" th:text="#{apellido1}">Apellido 1:</th>
+      <td th:text="${comercial.apellido1}">Apellido 1</td>
+    </tr>
+    <tr>
+      <th style="text-align: left;" th:text="#{apellido2}">Apellido 2:</th>
+      <td th:text="${comercial.apellido2 ?: ''}">Apellido 2</td>
+    </tr>
+    <tr>
+      <th style="text-align: left;" th:text="#{comision}">Comisión:</th>
+      <td th:text="${comercial.comision}">0</td>
+    </tr>
+    <tr>
+      <th style="text-align: left;" th:text="#{total}">Total:</th>
+      <td th:text="${totalPedidos}">0</td>
+    </tr>
+    <tr>
+      <th style="text-align: left;" th:text="#{media}">Media:</th>
+      <td th:text="${mediaPedidos}">0</td>
+    </tr>
+  </table>
 
-    <div style="margin-top: 6px" class="clearfix">
-        <div th:text="#{hayPedidos}" style="margin-bottom: 10px;">
-            Pedidos
-        </div>
+  <div style="margin-top: 6px" class="clearfix">
+    <div th:text="#{hayPedidos}" style="margin-bottom: 10px;">
+      Pedidos
+    </div>
+      <div class="clearfix">
+        <div style="float: left;width: 14%">Id</div>
+        <div style="float: left;width: 14%" th:text="#{total}"></div>
+        <div style="float: left;width: 14%" th:text="#{fecha}"></div>
+        <div style="float: left;width: 14%" th:text="#{clientes.titulo}"></div>
+      </div>
+      <div class="clearfix">
+        <br>
+        <hr/>
+      </div>
 
-        <table style="border-collapse: collapse; width: auto; margin-top: 10px;">
-            <thead>
-            <tr>
-                <th style="border: 1px solid grey; padding: 10px;" th:text="#{id}">Id</th>
-                <th style="border: 1px solid grey; padding: 10px;" th:text="#{fecha}">Fecha</th>
-                <th style="border: 1px solid grey; padding: 10px;" th:text="#{total}">Total</th>
-                <th style="border: 1px solid grey; padding: 10px;" th:text="#{clientes.titulo}">Cliente</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="pedidoDTO : ${pedidosDTO}" style="border: 1px solid grey;">
-                <td style="border: 1px solid grey; padding: 10px;" th:text="${pedidoDTO.getId()}"></td>
-                <td style="border: 1px solid grey; padding: 10px;" th:text="${pedidoDTO.getFecha()}"></td>
-                <td style="border: 1px solid grey; padding: 10px;" th:text="${pedidoDTO.getTotal()} + ' €'"></td>
-                <td style="border: 1px solid grey; padding: 10px;">
-                    <a th:href="@{/clientes/__${pedidoDTO.getIdCliente()}__}" th:text="${pedidoDTO.getNombreCliente()}" target="_blank"></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-        <div th:if="${pedidosDTO.isEmpty()}" style="margin-top: 10px;">
-            <p th:text="#{noHayPedidos}">No hay pedidos</p>
-        </div>
+      <div  th:each="pedidoDTO : ${pedidosDTO}" style="margin-top: 6px;" class="clearfix">
+        <div  style="float: left;width: 14%" th:text="${pedidoDTO.id}">0</div>
+        <div style="float: left;width: 14%" th:text="${pedidoDTO.total}">total</div>
+        <div style="float: left;width: 14%" th:text="${pedidoDTO.fecha}">fecha</div>
+        <div style="float: left;width: 14%" th:text="${pedidoDTO.id_cliente}">cliente</div> <a th:href="@{/cliente/{id}(id=${pedidoDTO.id_cliente})}">Detail</a>
+      </div>
     </div>
 
 
-    <!-- Botón para volver -->
-    <div style="margin-top: 20px;">
-        <a th:href="@{/comerciales}" th:text="#{cancelar}">Volver</a>
-    </div>
+  <!-- Botón para volver -->
+  <div style="margin-top: 20px;">
+    <a th:href="@{/comercial}" th:text="#{cancelar}">Volver</a>
+  </div>
 </div>
 </body>
 </html>

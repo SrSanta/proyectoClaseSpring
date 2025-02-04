@@ -5,11 +5,13 @@ import java.util.Optional;
 
 import org.iesbelen.dao.ClienteDAO;
 import org.iesbelen.modelo.Cliente;
+import org.iesbelen.modelo.Comercial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ClienteService {
+
 	@Autowired
 	private ClienteDAO clienteDAO;
 	
@@ -20,9 +22,9 @@ public class ClienteService {
 	}
 
 	public Cliente one(Integer id) {
-		Optional<Cliente> optFab = clienteDAO.find(id);
-		if (optFab.isPresent())
-			return optFab.get();
+		Optional<Cliente> optCli = clienteDAO.find(id);
+		if (optCli.isPresent())
+			return optCli.get();
 		else
 			return null;
 	}
@@ -39,9 +41,10 @@ public class ClienteService {
 
 	}
 
-	public void deleteCliente(int id) {
+	public void deletecliente(int id) {
 
 		clienteDAO.delete(id);
 
 	}
+
 }

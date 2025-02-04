@@ -19,7 +19,7 @@
 		</div>
 		<div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
 			<div style="position: absolute; left: 39%; top: 39%;">
-				<form action="/clientes/crear">
+				<form action="/cliente/crear">
 					<input type="submit" th:value="#{clientes.nuevo}" value="Crear">
 				</form>
 			</div>
@@ -48,13 +48,13 @@
 		<div style="float: left;width: 14%" th:text="${cliente.ciudad}">ciudad</div>
 		<div style="float: left;width: 14%" th:text="${cliente.categoria}">categoría</div>
 		<div style="float: none;width: auto;overflow: hidden;">
-			<form th:action="@{/clientes/__${cliente.id}__}" style="display: inline;">
+			<form th:action="@{/cliente/__${cliente.id}__}" style="display: inline;">
 				<input type="submit" th:value="#{detalle}" value="Ver Detalle" />
 			</form>
-			<form th:action="@{/clientes/editar/__${cliente.id}__}" style="display: inline;">
+			<form th:action="@{/cliente/editar/__${cliente.id}__}" style="display: inline;">
 				<input type="submit" th:value="#{clientes.editar}" value="Editar" />
 			</form>
-			<form th:action="@{/clientes/borrar/__${cliente.id}__}" method="post" style="display: inline;">
+			<form th:action="@{/cliente/borrar/__${cliente.id}__}" method="post" style="display: inline;">
 				<input type="submit" th:value="#{clientes.eliminar}" value="Eliminar" />
 			</form>
 		</div>

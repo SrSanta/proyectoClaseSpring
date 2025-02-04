@@ -24,19 +24,17 @@ public class ComercialDAOImpl implements ComercialDAO {
 
 	//JdbcTemplate se inyecta por el constructor de la clase automáticamente
 	//
-	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
 	@Override
 	public void create(Comercial comercial) {
-		// TODO Auto-generated method stub
+
 		String sqlInsert = """
 							INSERT INTO comercial (nombre, apellido1, apellido2, comisión) 
 							VALUES  (     ?,         ?,         ?,       ?)
 						   """;
 
 		KeyHolder keyHolder = new GeneratedKeyHolder();
-		//Con recuperación de id generado
 		int rows = jdbcTemplate.update(connection -> {
 			PreparedStatement ps = connection.prepareStatement(sqlInsert, new String[] { "id" });
 			int idx = 1;
@@ -50,6 +48,7 @@ public class ComercialDAOImpl implements ComercialDAO {
 		comercial.setId(keyHolder.getKey().intValue());
 
 		log.info("Insertados {} registros.", rows);
+
 	}
 
 	@Override
@@ -72,7 +71,6 @@ public class ComercialDAOImpl implements ComercialDAO {
 
 	@Override
 	public Optional<Comercial> find(int id) {
-		// TODO Auto-generated method stub
 		Comercial com =  jdbcTemplate
 				.queryForObject("SELECT * FROM comercial WHERE id = ?"
 						, (rs, rowNum) -> new Comercial(rs.getInt("id"),
@@ -86,38 +84,34 @@ public class ComercialDAOImpl implements ComercialDAO {
 		if (com != null) {
 			return Optional.of(com);}
 		else {
-			log.info("comercial no encontrado.");
+			log.info("Comercial no encontrado.");
 			return Optional.empty(); }
-
 	}
 
 	@Override
 	public void update(Comercial comercial) {
-		// TODO Auto-generated method stub
 		int rows = jdbcTemplate.update("""
 										UPDATE comercial SET 
 														nombre = ?, 
 														apellido1 = ?, 
 														apellido2 = ?,
-														comisión = ?  
+														comisión = ?
 												WHERE id = ?
-										""", comercial.getNombre()
-				, comercial.getApellido1()
-				, comercial.getApellido2()
-				, comercial.getComision()
-				, comercial.getId());
+										""", comercial.getNombre(),
+											comercial.getApellido1(),
+											comercial.getApellido2(),
+											comercial.getComision(),
+											comercial.getId());
 
-		log.info("Update de comercial con {} registros actualizados.", rows);
+		log.info("Update de Comercial con {} registros actualizados.", rows);
 
 	}
 
 	@Override
 	public void delete(long id) {
-		// TODO Auto-generated method stub
 		int rows = jdbcTemplate.update("DELETE FROM comercial WHERE id = ?", id);
 
-		log.info("Delete de comercial con {} registros eliminados.", rows);
-
+		log.info("Delete de Comercial con {} registros eliminados.", rows);
 	}
 
 }

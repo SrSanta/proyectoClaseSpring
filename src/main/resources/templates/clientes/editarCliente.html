@@ -8,41 +8,41 @@
 <div>
     <h1 th:text="#{clientes.editar}">Editar Cliente</h1>
 
-    <form th:action="@{/clientes/editar/__${cliente.id}__}" th:object="${cliente}" method="post">
-    <input type="hidden" th:field="*{id}" />
+    <form th:action="@{/cliente/editar/__${cliente.id}__}" th:object="${cliente}" method="post">
+        <input type="hidden" th:field="*{id}" />
 
-    <div>
-        <label th:text="#{nombre}">Nombre:</label>
-        <input th:field="*{nombre}" />
-        <p style="color:red;" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
-    </div>
+        <div>
+            <label th:text="#{nombre}">Nombre:</label>
+            <input th:field="*{nombre}" />
+            <p style="color:red;" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+        </div>
 
-    <div>
-        <label th:text="#{apellido1}">Primer Apellido:</label>
-        <input th:field="*{apellido1}" />
-        <p style="color:red;" th:if="${#fields.hasErrors('apellido1')}" th:errors="*{apellido1}"></p>
-    </div>
+        <div>
+            <label th:text="#{apellido1}">Primer Apellido:</label>
+            <input th:field="*{apellido1}" />
+            <p style="color:red;" th:if="${#fields.hasErrors('apellido1')}" th:errors="*{apellido1}"></p>
+        </div>
 
-    <div>
-        <label th:text="#{apellido2}">Segundo Apellido:</label>
-        <input th:field="*{apellido2}" />
-    </div>
+        <div>
+            <label th:text="#{apellido2}">Segundo Apellido:</label>
+            <input th:field="*{apellido2}" />
+        </div>
 
-    <div>
-        <label th:text="#{ciudad}">Ciudad:</label>
-        <input th:field="*{ciudad}" />
-        <p style="color:red;" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></p>
-    </div>
+        <div>
+            <label th:text="#{ciudad}">Ciudad:</label>
+            <input th:field="*{ciudad}" />
+            <p style="color:red;" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></p>
+        </div>
 
-    <div>
-        <label th:text="#{categoria}">Categoría:</label>
-        <input th:field="*{categoria}" />
-        <p style="color:red;" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></p>
-    </div>
+        <div>
+            <label th:text="#{categoria}">Categoría:</label>
+            <input th:field="*{categoria}" />
+            <p style="color:red;" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}"></p>
+        </div>
 
-    <button type="submit" th:text="#{guardar}">Guardar</button>
-    <a th:href="@{/clientes}" th:text="#{cancelar}">Cancelar</a>
-</form>
+        <button type="submit" th:text="#{guardar}">Guardar</button>
+        <a th:href="@{/cliente}" th:text="#{cancelar}">Cancelar</a>
+    </form>
 
 </div>
 </body>

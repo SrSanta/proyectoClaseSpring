@@ -1,12 +1,13 @@
 package org.iesbelen.dao;
 
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
+
 import org.iesbelen.modelo.Pedido;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Repository
@@ -73,7 +74,7 @@ public class PedidoDAOImpl implements PedidoDAO {
     }
 
     @Override
-    public Integer getTotalPedido() {
+    public int getTotalPedidos() {
         return jdbcTemplate.queryForObject("SELECT count(*) FROM pedido", Integer.class);
     }
 }
