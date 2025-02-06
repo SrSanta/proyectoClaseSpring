@@ -56,11 +56,18 @@ public class ComercialDAOImpl implements ComercialDAO {
 		
 		List<Comercial> listComercial = jdbcTemplate.query(
                 "SELECT * FROM comercial",
-                (rs, rowNum) -> new Comercial(rs.getInt("id"), 
-                							  rs.getString("nombre"), 
-                							  rs.getString("apellido1"),
-                							  rs.getString("apellido2"), 
-                							  rs.getBigDecimal("comisión"))
+                (rs, rowNum) -> Comercial.builder()
+						.id(rs.getInt("id"))
+						.nombre(rs.getString("nombre"))
+						.apellido1(rs.getString("apellido1"))
+						.apellido2(rs.getString("apellido2"))
+						.comision(rs.getBigDecimal("comisión"))
+						.build()
+//						new Comercial(rs.getInt("id"),
+//                							  rs.getString("nombre"),
+//                							  rs.getString("apellido1"),
+//                							  rs.getString("apellido2"),
+//                							  rs.getBigDecimal("comisión"))
                 						 	
         );
 		
@@ -73,11 +80,19 @@ public class ComercialDAOImpl implements ComercialDAO {
 	public Optional<Comercial> find(int id) {
 		Comercial com =  jdbcTemplate
 				.queryForObject("SELECT * FROM comercial WHERE id = ?"
-						, (rs, rowNum) -> new Comercial(rs.getInt("id"),
-								rs.getString("nombre"),
-								rs.getString("apellido1"),
-								rs.getString("apellido2"),
-								rs.getBigDecimal("comisión"))
+						, (rs, rowNum) ->
+								Comercial.builder()
+										.id(rs.getInt("id"))
+										.nombre(rs.getString("nombre"))
+										.apellido1(rs.getString("apellido1"))
+										.apellido2(rs.getString("apellido2"))
+										.comision(rs.getBigDecimal("comisión"))
+										.build()
+//								new Comercial(rs.getInt("id"),
+//								rs.getString("nombre"),
+//								rs.getString("apellido1"),
+//								rs.getString("apellido2"),
+//								rs.getBigDecimal("comisión"))
 						, id
 				);
 

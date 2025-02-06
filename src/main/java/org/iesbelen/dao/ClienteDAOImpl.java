@@ -71,13 +71,22 @@ public class ClienteDAOImpl implements ClienteDAO {
 		
 		List<Cliente> listFab = jdbcTemplate.query(
                 "SELECT * FROM cliente",
-                (rs, rowNum) -> new Cliente(rs.getInt("id"),
-                						 	rs.getString("nombre"),
-                						 	rs.getString("apellido1"),
-                						 	rs.getString("apellido2"),
-                						 	rs.getString("ciudad"),
-                						 	rs.getInt("categoría")
-                						 	)
+                (rs, rowNum) ->
+						Cliente.builder()
+								.id(rs.getInt("id"))
+								.nombre(rs.getString("nombre"))
+								.apellido1(rs.getString("apellido1"))
+								.apellido2(rs.getString("apellido2"))
+								.ciudad(rs.getString("ciudad"))
+								.categoria(rs.getInt("categoría"))
+								.build()
+//						new Cliente(rs.getInt("id"),
+//                						 	rs.getString("nombre"),
+//                						 	rs.getString("apellido1"),
+//                						 	rs.getString("apellido2"),
+//                						 	rs.getString("ciudad"),
+//                						 	rs.getInt("categoría")
+//                						 	)
         );
 		
 		log.info("Devueltos {} registros.", listFab.size());
@@ -93,13 +102,15 @@ public class ClienteDAOImpl implements ClienteDAO {
 		
 		Cliente fab =  jdbcTemplate
 				.queryForObject("SELECT * FROM cliente WHERE id = ?"														
-								, (rs, rowNum) -> Cliente.builder()
-								.nombre(rs.getString("nombre"))
-								.apellido1(rs.getString("apellido1"))
-								.apellido2(rs.getString("apellido2"))
-								.ciudad(rs.getString("ciudad"))
-								.categoria(rs.getInt("categoria"))
-								.build()
+								, (rs, rowNum) ->
+								Cliente.builder()
+										.id(rs.getInt("id"))
+										.nombre(rs.getString("nombre"))
+										.apellido1(rs.getString("apellido1"))
+										.apellido2(rs.getString("apellido2"))
+										.ciudad(rs.getString("ciudad"))
+										.categoria(rs.getInt("categoría"))
+										.build()
 //								new Cliente(rs.getInt("id"),
 //            						 						rs.getString("nombre"),
 //            						 						rs.getString("apellido1"),
