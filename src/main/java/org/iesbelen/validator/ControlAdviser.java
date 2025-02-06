@@ -10,13 +10,13 @@ public class ControlAdviser {
     public String handleMiException(Model model, MiExcepcion miExcepcion){
         model.addAttribute("mensajeError", miExcepcion.getMessage());
 
-        return "errores/error";
+        return "error";
     }
 
     @ExceptionHandler(RuntimeException.class)
     public String handleAllUncauhhtException(Model model, RuntimeException exception){
         model.addAttribute("mensajeError", exception.getMessage());
 
-        return "errores/error";
+        return "error";
     }
 }

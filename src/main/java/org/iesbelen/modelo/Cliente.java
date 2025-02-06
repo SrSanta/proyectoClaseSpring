@@ -2,6 +2,7 @@ package org.iesbelen.modelo;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.iesbelen.validator.RangoCategoria;
@@ -10,6 +11,7 @@ import org.iesbelen.validator.RangoCategoriaPlus;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Cliente {
 	
 	private long id;

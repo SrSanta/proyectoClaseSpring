@@ -93,12 +93,19 @@ public class ClienteDAOImpl implements ClienteDAO {
 		
 		Cliente fab =  jdbcTemplate
 				.queryForObject("SELECT * FROM cliente WHERE id = ?"														
-								, (rs, rowNum) -> new Cliente(rs.getInt("id"),
-            						 						rs.getString("nombre"),
-            						 						rs.getString("apellido1"),
-            						 						rs.getString("apellido2"),
-            						 						rs.getString("ciudad"),
-            						 						rs.getInt("categoría")) 
+								, (rs, rowNum) -> Cliente.builder()
+								.nombre(rs.getString("nombre"))
+								.apellido1(rs.getString("apellido1"))
+								.apellido2(rs.getString("apellido2"))
+								.ciudad(rs.getString("ciudad"))
+								.categoria(rs.getInt("categoria"))
+								.build()
+//								new Cliente(rs.getInt("id"),
+//            						 						rs.getString("nombre"),
+//            						 						rs.getString("apellido1"),
+//            						 						rs.getString("apellido2"),
+//            						 						rs.getString("ciudad"),
+//            						 						rs.getInt("categoría"))
 								, id
 								);
 		

@@ -12,13 +12,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+@RequestMapping("/cliente")
 @Controller
 public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
 
-	@GetMapping("/cliente")
+	@GetMapping("")
 	public String listar(Model model) {
 		
 		List<Cliente> listaClientes =  clienteService.listAll();
@@ -28,7 +29,7 @@ public class ClienteController {
 		
 	}
 
-	@GetMapping("/cliente/{id}")
+	@GetMapping("/{id}")
 	public String detalle(Model model, @PathVariable Integer id ) {
 
 		Cliente cliente = clienteService.one(id);
@@ -38,7 +39,7 @@ public class ClienteController {
 
 	}
 
-	@GetMapping("/cliente/crear")
+	@GetMapping("/crear")
 	public String crear(Model model) {
 
 		Cliente cliente = new Cliente();
@@ -48,7 +49,7 @@ public class ClienteController {
 
 	}
 
-	@PostMapping("/cliente/crear")
+	@PostMapping("/crear")
 	public String submitCrear(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult result) {
 
 		if (!result.hasErrors()) {
@@ -59,7 +60,7 @@ public class ClienteController {
 		return "clientes/crearCliente";
 	}
 
-	@GetMapping("/cliente/editar/{id}")
+	@GetMapping("/editar/{id}")
 	public String editar(Model model, @PathVariable Integer id) {
 
 		Cliente cliente = clienteService.one(id);
@@ -70,7 +71,7 @@ public class ClienteController {
 	}
 
 
-	@PostMapping("/cliente/editar/{id}")
+	@PostMapping("/editar/{id}")
 	public String submitEditar(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult result) {
 
 		if (!result.hasErrors()) {
@@ -81,7 +82,7 @@ public class ClienteController {
 		return "clientes/editarCliente";
 	}
 
-	@PostMapping("/cliente/borrar/{id}")
+	@PostMapping("/borrar/{id}")
 	public String submitBorrar(@PathVariable Integer id) {
 
 		clienteService.deletecliente(id);
