@@ -20,11 +20,19 @@ public class PedidoDAOImpl implements PedidoDAO {
     public List<Pedido> getAll() {
         List<Pedido> listPedido = jdbcTemplate.query(
                 "SELECT * FROM pedido",
-                (rs, rowNum) -> new Pedido(rs.getInt("id"),
-                        rs.getDouble("total"),
-                        rs.getDate("fecha").toLocalDate(),
-                        rs.getLong("id_cliente"),
-                        rs.getInt("id_comercial"))
+                (rs, rowNum) ->
+                        Pedido.builder()
+                                .id(rs.getInt("id"))
+                                .total(rs.getDouble("total"))
+                                .fecha(rs.getDate("fecha").toLocalDate())
+                                .id_cliente(rs.getLong("id_cliente"))
+                                .id_comercial(rs.getInt("id_comercial"))
+                                .build()
+//                        new Pedido(rs.getInt("id"),
+//                        rs.getDouble("total"),
+//                        rs.getDate("fecha").toLocalDate(),
+//                        rs.getLong("id_cliente"),
+//                        rs.getInt("id_comercial"))
         );
 
         log.info("Devueltos {} registros.", listPedido.size());
@@ -36,11 +44,19 @@ public class PedidoDAOImpl implements PedidoDAO {
     public List<Pedido> getAllByComercial(int idComercial) {
         List<Pedido> listPedido = jdbcTemplate.query(
                 "SELECT * FROM pedido WHERE id_comercial = ?",
-                (rs, rowNum) -> new Pedido(rs.getInt("id"),
-                        rs.getDouble("total"),
-                        rs.getDate("fecha").toLocalDate(),
-                        rs.getLong("id_cliente"),
-                        rs.getInt("id_comercial"))
+                (rs, rowNum) ->
+                        Pedido.builder()
+                                .id(rs.getInt("id"))
+                                .total(rs.getDouble("total"))
+                                .fecha(rs.getDate("fecha").toLocalDate())
+                                .id_cliente(rs.getLong("id_cliente"))
+                                .id_comercial(rs.getInt("id_comercial"))
+                                .build()
+//                        new Pedido(rs.getInt("id"),
+//                        rs.getDouble("total"),
+//                        rs.getDate("fecha").toLocalDate(),
+//                        rs.getLong("id_cliente"),
+//                        rs.getInt("id_comercial"))
                 , idComercial
         );
 
@@ -53,11 +69,19 @@ public class PedidoDAOImpl implements PedidoDAO {
     public List<Pedido> getAllByCliente(int idCliente) {
         List<Pedido> listPedido = jdbcTemplate.query(
                 "SELECT * FROM pedido WHERE id_cliente = ?",
-                (rs, rowNum) -> new Pedido(rs.getInt("id"),
-                        rs.getDouble("total"),
-                        rs.getDate("fecha").toLocalDate(),
-                        rs.getLong("id_cliente"),
-                        rs.getInt("id_comercial"))
+                (rs, rowNum) ->
+                        Pedido.builder()
+                                .id(rs.getInt("id"))
+                                .total(rs.getDouble("total"))
+                                .fecha(rs.getDate("fecha").toLocalDate())
+                                .id_cliente(rs.getLong("id_cliente"))
+                                .id_comercial(rs.getInt("id_comercial"))
+                                .build()
+//                        new Pedido(rs.getInt("id"),
+//                        rs.getDouble("total"),
+//                        rs.getDate("fecha").toLocalDate(),
+//                        rs.getLong("id_cliente"),
+//                        rs.getInt("id_comercial"))
                 , idCliente
         );
 
